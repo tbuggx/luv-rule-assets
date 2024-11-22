@@ -1,0 +1,74 @@
+name: Update Rule Assets
+
+on:
+  # 提交代码时运行一次
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: '0 0 * * *'  # 每天运行一次
+  workflow_dispatch:     # 允许手动触发
+
+jobs:
+  update-rules:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.9-slim
+    
+    steps:
+    - name: Install git
+      run: |
+        apt-get update
+        apt-get install -y git
+
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Download rules
+      run: |
+        # 创建 Python 脚本
+        cat > download_rules.py << 'EOF'
+        import os
+        import requests
+        
+        def ensure_dir(file_path):
+          directory = os.path.dirname(file_path)
+          if not os.path.exists(directory):
+            os.makedirs(directory)
+        
+        def download_file(url, local_path):
+          response = requests.get(url)
+          response.raise_for_status()
+          ensure_dir(local_path)
+          with open(local_path, 'wb') as f:
+            f.write(response.content)
+          print(f"Downloaded: {url} -> {local_path}")
+        
+        # 读取 assets.txt
+        with open('assets.txt', 'r') as f:
+          urls = [line.strip() for line in f if line.strip() and not line.strip().startswith('#')]
+        
+        # 下载每个文件
+        for url in urls:
+          if url.startswith('https://cdn.jsdelivr.net/gh/'):
+            # 解析路径
+            path_parts = url.split('gh/')[1].split('/')
+            local_path = os.path.join(*path_parts)
+            try:
+              download_file(url, local_path)
+            except Exception as e:
+              print(f"Error downloading {url}: {str(e)}")
+        EOF
+        
+        # 安装依赖并运行脚本
+        pip install requests
+        python download_rules.py
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -m "Update rule assets" || echo "No changes to commit"
+        git push
