@@ -13,17 +13,17 @@ on:
 jobs:
   update-rules:
     runs-on: ubuntu-latest
-    container:
-      image: python:3.9-slim
     
     steps:
-    - name: Install git
-      run: |
-        apt-get update
-        apt-get install -y git
-
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
 
     - name: Download rules
       run: |
@@ -67,8 +67,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
         git add .
         git commit -m "Update rule assets" || echo "No changes to commit"
         git push
