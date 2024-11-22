@@ -10,8 +10,14 @@ def download_file(url, local_path):
   response = requests.get(url)
   response.raise_for_status()
   ensure_dir(local_path)
+  
+  content = response.content
+  # 如果是 google.txt, 添加 Gemini 域名
+  if local_path.endswith('google.txt'):
+    content = content + b'\n  - \'+.gemini.google.com\''
+  
   with open(local_path, 'wb') as f:
-    f.write(response.content)
+    f.write(content)
   print(f"Downloaded: {url} -> {local_path}")
 
 # 读取 assets.txt
