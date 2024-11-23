@@ -22,7 +22,7 @@ def download_file(url, local_path):
 
 # 读取 clash.txt
 with open('clash.txt', 'r') as f:
-  urls = [line.strip() for line in f if line.strip() and not line.strip().startswith('#')]
+  urls = [line.strip() for line in f if line.strip() and line.strip().startswith('https://')]
 
 # 下载每个文件
 for url in urls:
