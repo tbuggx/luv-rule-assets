@@ -13,14 +13,17 @@ def download_file(url, local_path):
   except Exception as e:
     print(f"Failed to load URL {url}: {str(e)}")
     return
-  
+
+  # 创建本地文件路径
   ensure_dir(local_path)
-  
+  # 获取下载文件内容
   content = response.content
+
   # 如果是 google.txt, 添加 Gemini 域名
   if local_path.endswith('google.txt'):
     content = content + b'  - \'+.gemini.google.com\''
   
+  # 写入文件
   with open(local_path, 'wb') as f:
     f.write(content)
   print(f"Downloaded: {url} -> {local_path}")
@@ -42,6 +45,14 @@ def cache_file_list(file_path):
     if url.startswith('https://cdn.jsdelivr.net/gh/'):
       # 解析路径
       path_parts = url.split('gh/')[1].split('/')
+      local_path = os.path.join(filename, *path_parts)
+      try:
+        download_file(url, local_path)
+      except Exception as e:
+        print(f"Error downloading {url}: {str(e)}")
+    if url.startswith('https://raw.githubusercontent.com/'):
+      # 解析路径
+      path_parts = url.split('raw.githubusercontent.com/')[1].split('/')
       local_path = os.path.join(filename, *path_parts)
       try:
         download_file(url, local_path)
