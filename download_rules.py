@@ -59,7 +59,11 @@ def cache_file_list(file_path):
       except Exception as e:
         print(f"Error downloading {url}: {str(e)}")
 
-# 缓存 Clash 资源
+# 缓存通用图标资源
+cache_file_list('icon.txt')
+# 缓存 Loon 资源
 cache_file_list('clash.txt')
 # 缓存 Loon 资源
 cache_file_list('loon.txt')
+# 缓存 QuantumultX 资源
+cache_file_list('quanx.txt')
