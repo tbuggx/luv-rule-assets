@@ -1,0 +1,57 @@
+# 资源解析器
+https://cdn.jsdelivr.net/gh/KOP-XIAO/QuantumultX@master/Scripts/resource-parser.js
+# 地理信息
+https://raw.githubusercontent.com/Orz-3/Orz-3/master/QuantumultX/IP.js
+
+# =====================================================================
+# 规则合集（融合进服务器列表）
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini
+# 广告拦截
+https://raw.githubusercontent.com/NobyDa/ND-AD/master/QuantumultX/AD_Block.txt
+# 苹果服务
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/Apple.list
+# 网易云音乐
+https://raw.githubusercontent.com/GeQ1an/Rules/master/QuantumultX/Filter/Optional/Netease%20Music.list
+# 国内视频
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/StreamingCN.list
+# TikTok
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/TikTok.list
+# Netflix
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/Netflix.list
+# Spotify
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Music/Spotify.list
+# YouTube
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/YouTube.list
+# 国外影视
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Streaming.list
+# Telegram
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Telegram/Telegram.list
+# 微软服务
+https://raw.githubusercontent.com/GeQ1an/Rules/master/QuantumultX/Filter/Optional/Microsoft.list
+# PayPal
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/PayPal.list
+# Speedtest
+https://raw.githubusercontent.com/GeQ1an/Rules/master/QuantumultX/Filter/Speedtest.list
+# 学术搜索
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Scholar.list
+# 国外网站
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Global.list
+# 国内网站
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/China.list
+
+# =====================================================================
+# rewrite 复写远程订阅
+# YouTube去广告（Premium用户请勿开启）
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/YouTubeAds.conf
+# 神机规则重定向
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/General.conf
+# 神机去广告规则
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/Advertising.conf
+# YouTube去广告
+https://raw.githubusercontent.com/Orz-3/QuantumultX/master/YouTube.conf
+# 解锁Tiktok(自行安装证书并开启mitm)
+https://raw.githubusercontent.com/Orz-3/Orz-3/master/QuantumultX/TikTok.conf
+
+# =====================================================================
+# BoxJS
+https://raw.githubusercontent.com/chavyleung/scripts/master/chavy.box.js
