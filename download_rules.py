@@ -20,17 +20,30 @@ def download_file(url, local_path):
     f.write(content)
   print(f"Downloaded: {url} -> {local_path}")
 
-# 读取 clash.txt
-with open('clash.txt', 'r') as f:
-  urls = [line.strip() for line in f if line.strip() and line.strip().startswith('https://')]
+def cache_file_list(file_path):
+  # 检查文件是否存在
+  if not os.path.exists(file_path):
+    print(f"File not found: {file_path}")
+    return
 
-# 下载每个文件
-for url in urls:
-  if url.startswith('https://cdn.jsdelivr.net/gh/'):
-    # 解析路径
-    path_parts = url.split('gh/')[1].split('/')
-    local_path = os.path.join('clash', *path_parts)
-    try:
-      download_file(url, local_path)
-    except Exception as e:
-      print(f"Error downloading {url}: {str(e)}")
+  # 读取 file_path
+  with open(file_path, 'r') as f:
+    urls = [line.strip() for line in f if line.strip() and line.strip().startswith('https://')]
+
+  # 取得文件名，不包括扩展名
+  filename = os.path.splitext(os.path.basename(file_path))[0] 
+  # 下载每个文件
+  for url in urls:
+    if url.startswith('https://cdn.jsdelivr.net/gh/'):
+      # 解析路径
+      path_parts = url.split('gh/')[1].split('/')
+      local_path = os.path.join(filename, *path_parts)
+      try:
+        download_file(url, local_path)
+      except Exception as e:
+        print(f"Error downloading {url}: {str(e)}")
+
+# 缓存 Clash 资源
+cache_file_list('clash.txt')
+# 缓存 Loon 资源
+cache_file_list('loon.txt')
