@@ -7,8 +7,13 @@ def ensure_dir(file_path):
     os.makedirs(directory)
 
 def download_file(url, local_path):
-  response = requests.get(url)
-  response.raise_for_status()
+  try:
+    response = requests.get(url)
+    response.raise_for_status()
+  except Exception as e:
+    print(f"Failed to load URL {url}: {str(e)}")
+    return
+  
   ensure_dir(local_path)
   
   content = response.content
