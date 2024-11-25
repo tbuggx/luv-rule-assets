@@ -1,5 +1,6 @@
 import os
 import requests
+import re
 
 def ensure_dir(file_path):
   directory = os.path.dirname(file_path)
