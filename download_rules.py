@@ -27,7 +27,7 @@ def download_file(url, local_path):
   # OpenAI.list
   if local_path.endswith('OpenAI.list'):
     # - 移除 challenges.cloudflare.com 域名
-    content = re.sub(rb'^(DOMAIN-SUFFIX,challenges\.cloudflare\.com)$', rb'# \1', content)
+    content = re.sub(rb'^(DOMAIN-SUFFIX,challenges\.cloudflare\.com)$', rb'#\1', content)
   
   # 写入文件
   with open(local_path, 'wb') as f:
