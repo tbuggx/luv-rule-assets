@@ -9,7 +9,7 @@ https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/FallBack.p
 # 负载均衡
 https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/LoadBalance.png
 # 时延优选
-https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/Find_My.png
+https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Find_My.png
 # ---------------------------------------------------------------------
 # 图标 - 应用
 # ---------------------------------------------------------------------
