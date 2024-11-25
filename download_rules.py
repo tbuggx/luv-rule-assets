@@ -12,7 +12,7 @@ def download_file(url, local_path):
     response = requests.get(url)
     response.raise_for_status()
   except Exception as e:
-    print(f"Failed to load URL {url}: {str(e)}")
+    print(f"Failed to load URL {url} : {str(e)}")
     return
 
   # 创建本地文件路径
