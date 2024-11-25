@@ -55,9 +55,14 @@ jobs:
           # 获取下载文件内容
           content = response.content
 
-          # 如果是 google.txt, 添加 Gemini 域名
+          # google.txt
           if local_path.endswith('google.txt'):
+            # - 添加 Gemini 域名
             content = content + b'  - \'+.gemini.google.com\''
+          # OpenAI.list
+          if local_path.endswith('OpenAI.list'):
+            # - 移除 challenges.cloudflare.com 域名
+            content = re.sub(rb'(?m)^DOMAIN-SUFFIX,challenges\.cloudflare\.com$', rb'# \0', content)
           
           # 写入文件
           with open(local_path, 'wb') as f:
