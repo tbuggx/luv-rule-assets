@@ -5,17 +5,17 @@
 #!tag = 去广告
 #!system = 
 #!system_version = 
-#!loon_version = 3.2.2(749)
+#!loon_version = 3.2.4(787)
 #!homepage = https://github.com/sooyaaabo/Loon/blob/main/README.md
 #!icon = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Icon/App/Goofish.png
-#!date = 2024-11-24 22:50
+#!date = 2024-12-17 10:40
 
-# 2024-11-24 19:15:39
+# 2024-11-28 00:00:00
 # https://kelee.one/Tool/Loon/Plugin/FleaMarket_remove_ads.plugin
 
 [Rule]
 # 移除广告下发请求
-AND, ((URL-REGEX, ^http:\/\/.+\/amdc\/mobileDispatch), (USER-AGENT, %E9%97%B2%E9%B1%BC*)), REJECT
+# AND, ((URL-REGEX, "^http:\/\/.+\/amdc\/mobileDispatch"), (USER-AGENT, "%E9%97%B2%E9%B1%BC*")), REJECT
 
 [Rewrite]
 # 首页顶部标签
@@ -52,6 +52,9 @@ AND, ((URL-REGEX, ^http:\/\/.+\/amdc\/mobileDispatch), (USER-AGENT, %E9%97%B2%E9
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ response-body-json-jq '.data.container.sections |= map(if .template.name == "my_fy25_user_info" then del(.item.level) else . end | select(.template.name | IN("my_fy25_slider", "xianyu_home_fish_my_banner_card_2023", "my_fy25_community") | not))'
 
 [Script]
+# 移除阿里巴巴通用广告请求
+# http-response ^http:\/\/.+\/amdc\/mobileDispatch script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/MyBlockAds/header.js, tag = 阿里巴巴通用广告
+
 # 我的页面
 http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ script-path = https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body = true, tag = 移除我的页面推广
 
