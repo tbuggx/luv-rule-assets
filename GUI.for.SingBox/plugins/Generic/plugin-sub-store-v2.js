@@ -36,7 +36,7 @@ const onUninstall = async () => {
 const onRun = async () => {
   if (!(await isSubStoreRunning())) {
     if (!(await Plugins.ignoredError(Plugins.Exec, CLI_NODE, ['-v']))) {
-      throw `检测到系统未安装Nodejs环境，请先安装。 ${nodeCmd}`
+      throw `检测到系统未安装Nodejs环境，请先安装。 `
     }
     await startSubStoreService()
   }
@@ -73,7 +73,7 @@ const Start = async () => {
     throw '当前服务已经在运行了'
   }
   if (!(await Plugins.ignoredError(Plugins.Exec, CLI_NODE, ['-v']))) {
-    throw `检测到系统未安装Nodejs环境，请先安装。${nodeCmd}`
+    throw `检测到系统未安装Nodejs环境，请先安装。`
   }
   await startSubStoreService()
   Plugins.message.success('✨Sub-Store 启动成功!')
