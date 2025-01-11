@@ -39,7 +39,6 @@ const onRun = async () => {
     if (await Plugins.FileExists(VOLTA_NODE)) {
       nodeCmd = VOLTA_NODE
     }
-    Plugins.message.success(`${CLI_NODE} - ${VOLTA_NODE} - ${nodeCmd}`)
     if (!(await Plugins.ignoredError(Plugins.Exec, nodeCmd, ['-v']))) {
       throw `检测到系统未安装Nodejs环境，请先安装。 ${nodeCmd}`
     }
