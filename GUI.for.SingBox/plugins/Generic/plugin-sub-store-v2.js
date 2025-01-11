@@ -7,8 +7,8 @@ const PATH = 'data/third/sub-store-v2'
 const PID_FILE = PATH + '/sub-store.pid'
 const FRONTEND_PATH = PATH + '/frontend'
 const BACKEND_FILE = PATH + '/sub-store.bundle.js'
+// '/home/david/.volta/bin/node'
 const CLI_NODE = 'node'
-const VOLTA_NODE = '/home/david/.volta/bin/node'
 
 /**
  * 插件钩子 - 点击安装按钮时
@@ -35,11 +35,7 @@ const onUninstall = async () => {
  */
 const onRun = async () => {
   if (!(await isSubStoreRunning())) {
-    let nodeCmd = CLI_NODE
-    if (await Plugins.FileExists(VOLTA_NODE)) {
-      nodeCmd = VOLTA_NODE
-    }
-    if (!(await Plugins.ignoredError(Plugins.Exec, nodeCmd, ['-v']))) {
+    if (!(await Plugins.ignoredError(Plugins.Exec, CLI_NODE, ['-v']))) {
       throw `检测到系统未安装Nodejs环境，请先安装。 ${nodeCmd}`
     }
     await startSubStoreService()
@@ -76,11 +72,7 @@ const Start = async () => {
   if (await isSubStoreRunning()) {
     throw '当前服务已经在运行了'
   }
-  let nodeCmd = CLI_NODE
-  if (await Plugins.FileExists(VOLTA_NODE)) {
-    nodeCmd = VOLTA_NODE
-  }
-  if (!(await Plugins.ignoredError(Plugins.Exec, nodeCmd, ['-v']))) {
+  if (!(await Plugins.ignoredError(Plugins.Exec, CLI_NODE, ['-v']))) {
     throw `检测到系统未安装Nodejs环境，请先安装。${nodeCmd}`
   }
   await startSubStoreService()
@@ -127,12 +119,8 @@ const startSubStoreService = () => {
     let timeout = true
     setTimeout(() => timeout && reject('启动Sub-Store服务超时'), 5000)
     try {
-      let nodeCmd = CLI_NODE
-      if (await Plugins.FileExists(VOLTA_NODE)) {
-        nodeCmd = VOLTA_NODE
-      }
       const pid = await Plugins.ExecBackground(
-        nodeCmd,
+        CLI_NODE,
         [env.basePath + '/' + BACKEND_FILE],
         (out) => {
           if (out.includes('[sub-store] INFO: [BACKEND]')) {
