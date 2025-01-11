@@ -40,7 +40,7 @@ const onRun = async () => {
       nodeCmd = VOLTA_NODE
     }
     if (!(await Plugins.ignoredError(Plugins.Exec, nodeCmd, ['-v']))) {
-      throw '检测到系统未安装Nodejs环境，请先安装。'
+      throw `检测到系统未安装Nodejs环境，请先安装。 ${nodeCmd}`
     }
     await startSubStoreService()
   }
@@ -81,7 +81,7 @@ const Start = async () => {
     nodeCmd = VOLTA_NODE
   }
   if (!(await Plugins.ignoredError(Plugins.Exec, nodeCmd, ['-v']))) {
-    throw '检测到系统未安装Nodejs环境，请先安装。'
+    throw `检测到系统未安装Nodejs环境，请先安装。${nodeCmd}`
   }
   await startSubStoreService()
   Plugins.message.success('✨Sub-Store 启动成功!')
