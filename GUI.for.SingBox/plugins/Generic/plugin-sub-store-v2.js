@@ -7,8 +7,8 @@ const PATH = 'data/third/sub-store-v2'
 const PID_FILE = PATH + '/sub-store.pid'
 const FRONTEND_PATH = PATH + '/frontend'
 const BACKEND_FILE = PATH + '/sub-store.bundle.js'
-// 'node', '/home/david/.volta/bin/node'
-const CLI_NODE = '/home/david/.volta/bin/node'
+// 'node', '/Users/david/.volta/bin/node'
+const CLI_NODE = '/Users/david/.volta/bin/node'
 
 /**
  * 插件钩子 - 点击安装按钮时
@@ -36,7 +36,7 @@ const onUninstall = async () => {
 const onRun = async () => {
   if (!(await isSubStoreRunning())) {
     if (!(await Plugins.ignoredError(Plugins.Exec, CLI_NODE, ['-v']))) {
-      throw `检测到系统未安装Nodejs环境，请先安装。 `
+      throw `检测到系统未安装Nodejs环境，请先安装。`
     }
     await startSubStoreService()
   }
