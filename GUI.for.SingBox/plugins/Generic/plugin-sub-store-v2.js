@@ -8,7 +8,7 @@ const PID_FILE = PATH + '/sub-store.pid'
 const FRONTEND_PATH = PATH + '/frontend'
 const BACKEND_FILE = PATH + '/sub-store.bundle.js'
 const CLI_NODE = 'node'
-const VOLTA_NODE = '~/.volta/bin/node'
+const VOLTA_NODE = '/home/david/.volta/bin/node'
 
 /**
  * 插件钩子 - 点击安装按钮时
