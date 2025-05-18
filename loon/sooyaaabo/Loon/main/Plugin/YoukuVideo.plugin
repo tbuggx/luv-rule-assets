@@ -1,14 +1,14 @@
 #!name = 优酷视频
-#!desc = 为好内容 全力以赴
+#!desc = 为好内容 全力以赴 [为好广告 全力以赴]
 #!openUrl = https://apps.apple.com/app/id336141475
 #!author = RuCu6[https://github.com/RuCu6]
 #!tag = 去广告
 #!system = 
 #!system_version = 
-#!loon_version = 3.2.5(805)
+#!loon_version = 3.3.0(853)
 #!homepage = https://github.com/sooyaaabo/Loon/blob/main/README.md
 #!icon = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Icon/App-Icon/YoukuVideo.png
-#!date = 2025-01-01 00:00
+#!date = 2025-05-13 22:00
 
 # https://raw.githubusercontent.com/RuCu6/QuanX/main/Rewrites/Cube/cnftp.snippet
 
@@ -39,6 +39,16 @@ DOMAIN, vali-ugc.cp31.ott.cibntv.net, REJECT
 DOMAIN, yk-ssp.ad.youku.com, REJECT
 DOMAIN, ykad-data.youku.com, REJECT
 DOMAIN, youku-acs.m.taobao.com, REJECT
+DOMAIN, zconfig.alibabausercontent.com, REJECT
+DOMAIN-SUFFIX, acz.youku.com, REJECT  
+DOMAIN-SUFFIX, adx-core.youku.com, REJECT  
+DOMAIN-SUFFIX, adx-open-service.youku.com, REJECT  
+DOMAIN-SUFFIX, mazu.m.qq.com, REJECT  
+DOMAIN-SUFFIX, partner.uc.cn, REJECT  
+DOMAIN-SUFFIX, ranfenghd.com, REJECT  
+DOMAIN-SUFFIX, rhdc-acs.youku.com, REJECT  
+# DOMAIN-SUFFIX, sm.cn, REJECT  
+DOMAIN-SUFFIX, ubixioe.com, REJECT  
 
 [Rewrite]
 # 播放页弹窗动图
@@ -46,22 +56,22 @@ DOMAIN, youku-acs.m.taobao.com, REJECT
 
 [Script]
 # 播放详情页、首页信息流、顶部标签页、我的页面、评论区
-http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query|ycp\.query) script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = 优酷视频首页
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query|ycp\.query) script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = [优酷视频]首页
 
 # 底栏
-http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.haidai\.lantern\.appconfig\.get script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = 优酷视频底栏
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.haidai\.lantern\.appconfig\.get script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = [优酷视频]底栏
 
 # 青少年模式弹窗
-http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.huluwa\.dispatcher\.youthmode\.config2 script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = 优酷视频青少年模式弹窗
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.huluwa\.dispatcher\.youthmode\.config2 script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = [优酷视频]青少年模式弹窗
 
 # 搜索列表
-http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.soku\.yksearch script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = 优酷视频搜索列表
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.soku\.yksearch script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = [优酷视频]搜索列表
 
 # 热剧弹窗
-http-response ^https:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\? script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = 优酷视频热剧弹窗
+http-response ^https:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\? script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = [优酷视频]热剧弹窗
 
 # 开屏广告
-http-response ^https:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = 优酷视频开屏广告
+http-response ^https:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get script-path = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Script/ChinaFTP/ChinaFTP.js, requires-body = true, tag = [优酷视频]开屏广告
 
 [MitM]
 hostname = acs.youku.com, push.m.youku.com, un-acs.youku.com
